@@ -39,7 +39,7 @@ module Kumade
     def add_and_commit_all_assets_in(dir)
       command = ["git checkout -b #{Kumade::Heroku::DEPLOY_BRANCH} 2>/dev/null",
                  "git add -f #{dir}",
-                 "git commit -m 'Compiled assets.'"].join(' && ')
+                 "git commit -m 'Compiled assets.' -n"].join(' && ')
       command_line = CommandLine.new(command)
       command_line.run_or_error("Cannot deploy: couldn't commit assets")
       Kumade.configuration.outputter.success("Added and committed all assets")
