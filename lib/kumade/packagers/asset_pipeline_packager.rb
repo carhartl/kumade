@@ -1,8 +1,3 @@
-# begin
-#   require "jammit"
-# rescue LoadError
-# end
-
 module Kumade
   class AssetPipelinePackager
     def self.assets_path
@@ -14,8 +9,7 @@ module Kumade
     end
 
     def self.package
-      # need to call rake task?
-      `bundle exec rake assets:precompile`
+      `bundle exec rake assets:precompile RAILS_ENV=#{Kumade.configuration.environment}`
     end
 
     private
